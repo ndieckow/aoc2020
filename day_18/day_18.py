@@ -1,3 +1,4 @@
+from time import time
 from itertools import takewhile
 
 data = open("input.txt").read().strip().split('\n')
@@ -26,7 +27,6 @@ def parse(line):
     return eval_simple_part2(newline)
 
 def eval_simple_part1(lst):
-    print(lst)
     while len(lst) > 1:
         op = lst[1]
         if op == '+':
@@ -50,8 +50,11 @@ def eval_simple_part2(lst):
         lst[:3] = [v]
     return lst[0]
 
+t_start = time()
 acc = 0
 for line in data:
     val = parse(line)
     acc += val
 print(acc)
+elapsed = 1000*(time() - t_start)
+print("Time: %.3fms" % elapsed)
